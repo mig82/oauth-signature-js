@@ -302,7 +302,11 @@ e;d++)if(d%4){var g=f.indexOf(b.charAt(d-1))<<2*(d%4),h=f.indexOf(b.charAt(d))>>
 	// support for the browser and nodejs
 	if (isNode) {
 		module.exports = oauthSignature;
-	} else {
+	}
+	else if(typeof postman != 'undefined') {
+		postman.oauthSignature = oauthSignature;
+	}
+	else {
 		window.oauthSignature = oauthSignature;
 	}
 })();
