@@ -271,10 +271,14 @@
 	oauthSignature.HmacSha1Signature = HmacSha1Signature;
 	oauthSignature.HmacSha1 = HmacSha1;
 
-	// support for the browser and nodejs
+	// support for the browser and nodejs and newman
 	if (isNode) {
 		module.exports = oauthSignature;
-	} else {
+	}
+	else if (typeof postman != 'undefined') {
+		postman.oauthSignature = oauthSignature;
+	}
+	else {
 		window.oauthSignature = oauthSignature;
 	}
 })();
